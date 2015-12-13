@@ -1,0 +1,26 @@
+{
+  "name": "how-to-learn-es6",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azu/how-to-learn-es6.git"
+  },
+  "author": "azu",
+  "email": "azuciao@gmail.com",
+  "homepage": "https://github.com/azu/how-to-learn-es6",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azu/how-to-learn-es6/issues"
+  },
+  "version": "1.0.0",
+  "description": "How to Learn ECMAScript2015 aka. ES6.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "es6"
+  ]
+}
