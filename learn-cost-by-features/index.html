@@ -1,0 +1,1883 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title></title>
+<script type="text/javascript" src="outliner.js"></script><style type="text/css">
+			
+                        img.status {
+                        margin-left: 2px; margin-right: 2px; margin-top: 2px; height: 11px; width: 11px;
+                        }
+                        
+                        img.checkbox-column {
+                        height: 11px; width: 11px; vertical-align: top; margin-top: 3px;
+                        }
+                        
+                        img.leaf {
+                        margin-left: 3px; margin-right:3px; margin-top: 2px; margin-bottom: 3px; height: 6px; width 6px;
+                        }
+                        
+                        img.parent {
+                        margin-left: 3px; margin-right:3px; margin-top: 2px; height: 10px; width: 10px;
+                        }
+			
+			th {
+			vertical-align: bottom;
+			
+			}
+			
+			td {
+			vertical-align: top;
+			}
+			
+			td,th {
+			
+			empty-cells: show;
+			}
+			
+			.top-right-border {
+			
+			}
+			
+			.no-border {
+			border-bottom: 0px;
+			border-left: 0px;
+			}
+			
+			
+			
+			
+			table {
+			
+			font-family: Helvetica, sans-serif;
+			font-size: 12px;
+			font-family: "American Typewriter", sans-serif;  font-size: 14px;			
+			
+			}
+
+			
+			
+			.wholeDocument {
+			color:rgb(66,66,66) ;  font-family: "American Typewriter", sans-serif;  font-size: 14px;background-color:rgb(255,255,255) ;  
+	
+			}
+		
+			
+			td.subcell {
+			border: none;
+			}
+			
+			td.content {
+			padding-left: 4px;
+			padding-bottom: 2px;
+			padding-top: 1px;
+			padding-right: 3px;
+			}
+			
+			.full {
+			height: 100%;
+			}
+			
+			.heighthack {
+                        
+                            height: 25px;
+                            
+			}
+			
+			div.titlepadding { 
+			padding-right:3px;
+			padding-left:6px;
+			padding-bottom:3px;
+			padding-top: 2px;
+			}
+			
+			
+					.summary_node {
+						background: rgba(0,0,0,.12);
+						margin-bottom: 1px;
+					}
+				
+			
+			div.column {   
+			padding-right: 3px;
+			padding-left: 4px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			margin-right: 1px;
+			}
+			
+			.labelpadding {
+			padding-right: 3px;
+			padding-top: 1px;
+			padding-left: 2px;
+			}
+			
+			.indicator {
+			white-space: nowrap;
+			text-align:right;
+			margin-right: 0px;
+			vertical-align: top;
+			padding-top: 1px;
+			padding-left: 0px;
+			}
+			
+			.wholedocgutter {
+			
+			}
+			
+			div.row {
+			}
+			
+			div.headerRow {
+			}
+			
+			.expanded {
+			display: inline;
+			}
+			.collapsed {
+			display: none;
+			}
+			
+            div.palette-hit-zone {
+                position: fixed;
+                bottom: 0px;
+				height: 33%;
+                left:50%;
+                width: 66%;
+                margin-left: -33%;
+            }
+
+			div.floating-palette {
+                -webkit-border-radius: 5px;
+                -webkit-transition: opacity is fade-in-out;
+                -webkit-transition-duration: 1s;
+				background-color: rgb(64, 64, 64);
+                opacity:0.7;
+				width: 88px;
+				height: 44px;
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                margin-left: -44px;
+			}
+            
+            div.palette-cell {
+                opacity:1;
+                margin-top: 6px;
+                margin-bottom: 6px;
+                position: absolute;
+                height: 32px;
+                width: 32px;
+            }
+            
+            div.cell-divider {
+                position: absolute;
+                margin-top: 6px;
+                margin-bottom: 6px;
+                margin-left: 44px;
+                height: 32px;
+                width:0px;
+                position:absolute;
+                left:0px;
+                border-right:rgb(207, 207, 207) 2px solid;
+            }
+			
+			
+			.altRow {
+				background-color: rgba(0,95,191,0.1) !important;  
+			}
+			
+			
+			
+			.note { 
+			padding-left: 5px;
+			padding-right: 3px; 
+			border: none; 
+			color:rgb(126,126,126) ;  font-size: 10px;font-size: 10px;
+			}
+			
+			/* Total table width is 763
+			Adjusted table width is 808 */
+			
+			.wholething {
+				width: auto;
+			}
+			
+			
+			table.row {
+				
+						width: 763px;
+						
+			
+			}
+			
+			
+    .col_width1 { 
+        width: 664px;  /* Actual width is 664 */
+    }
+
+    .col_width2 { 
+        width: 99px;  /* Actual width is 99 */
+    }
+
+    .col1 { 
+        
+    }
+
+    .col2 { 
+        text-align: right;  
+    }
+
+    .colbackground1 { 
+        
+    }
+
+    .colbackground2 { 
+        
+    }
+
+			
+			/* Level Styles */
+			
+			
+    .columntitle { 
+        font-weight: 900;  font-size: 13px;
+    }
+
+    .level1 { 
+        color:rgb(0,0,0) ;  font-size: 24px;
+    }
+
+    .levelcolor1 { 
+        
+    }
+
+    .levelguttercolor1 { 
+        
+    }
+
+    .level2 { 
+        font-weight: 900;  
+    }
+
+    .levelcolor2 { 
+        
+    }
+
+    .levelguttercolor2 { 
+        
+    }
+
+    .ns-Highlight:-Yellow { 
+        }
+
+    .ns-Highlight:-Green { 
+        }
+
+    .ns-Highlight:-Pink { 
+        }
+
+    .ns-bg-Highlight:-Yellow { 
+        background-color:rgb(251,237,113) ;  }
+
+    .ns-bg-Highlight:-Green { 
+        background-color:rgb(147,229,189) ;  }
+
+    .ns-bg-Highlight:-Pink { 
+        background-color:rgb(255,164,164) ;  }
+
+    .ns-gutter-Highlight:-Yellow { 
+        }
+
+    .ns-gutter-Highlight:-Green { 
+        }
+
+    .ns-gutter-Highlight:-Pink { 
+        }
+</style>
+</head>
+<body class="wholeDocument altRowColors"><table cellspacing="0" cellpadding="0" class="top-right-border"><tr><td class="wholething no-border">
+<!--Column Titles--><table cellspacing="0" border="0" cellpadding="0" class="headerRow heighthack"><tr>
+<td class=" col_width1"><div class="columntitle titlepadding">Features<br>
+</div></td>
+<td class=" col_width2"><div class="columntitle titlepadding">n/10<br>
+</div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">ECMAScriptの機能別にどれくらいの覚える前にどれぐらいコストがかかるかを感覚的にメモったもの。項目別の数字は1-10で単位はない(時間ではない)<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column level1" style=""></div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style="color:rgb(66,66,66) ;  font-size: 14px;"> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction#What_is_JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction#What_is_JavaScript</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column level1" style=""></div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pbsLJeb5_Kz1', event.shiftKey)" id="ibsLJeb5_Kz1" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types">Grammar and types</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">28</div></div></td>
+</tr></table>
+<div id="pbsLJeb5_Kz1" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pjV8xbZCmD7y', event.shiftKey)" id="ijV8xbZCmD7y" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Declarations<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">17</div></div></td>
+</tr></table>
+<div id="pjV8xbZCmD7y" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">var<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">let<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">const<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">4</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img onmousedown="ioSwitch('piuRhc_SIh-z', event.shiftKey)" id="iiuRhc_SIh-z" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Knowledge<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column summary_node level3" style="">10</div></div></td>
+</tr></table>
+<div id="piuRhc_SIh-z" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">Scope<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">5</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">TDZ<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor4"><div class="full column level4" style="">1</div></div></td>
+</tr>
+<tr>
+<td class=" level4 colbackground1"><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 57px;" class=" subcell wholedocgutter levelguttercolor4"></td>
+<td class=" subcell wholedocgutter levelguttercolor4" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor4 level4" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">そんなものあるんだー的なレベル<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor4" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">Hoisting<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor4"><div class="full column level4" style="">4</div></div></td>
+</tr>
+<tr>
+<td class=" level4 colbackground1"><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 57px;" class=" subcell wholedocgutter levelguttercolor4"></td>
+<td class=" subcell wholedocgutter levelguttercolor4" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor4 level4" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">ES6時代にはそこまで重要ではない<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor4" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pntdyBh8-4Z7', event.shiftKey)" id="intdyBh8-4Z7" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Data Type<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">11</div></div></td>
+</tr></table>
+<div id="pntdyBh8-4Z7" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Boolean<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">null<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">undefined<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Number<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">String<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img onmousedown="ioSwitch('pgy0HCoVPqEV', event.shiftKey)" id="igy0HCoVPqEV" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Object<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column summary_node level3" style="">4</div></div></td>
+</tr></table>
+<div id="pgy0HCoVPqEV" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">Array<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">Object<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">RegExp<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor4"><div class="full column level4" style="">2</div></div></td>
+</tr>
+<tr>
+<td class=" level4 colbackground1"><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 57px;" class=" subcell wholedocgutter levelguttercolor4"></td>
+<td class=" subcell wholedocgutter levelguttercolor4" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor4 level4" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">細かい解説すると終わらないのでSyntaxという意味<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor4" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Symbol<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('ph5wfpYTGxaH', event.shiftKey)" id="ih5wfpYTGxaH" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling">Control flow and error handling</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">23</div></div></td>
+</tr></table>
+<div id="ph5wfpYTGxaH" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">if-else<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pftblSL11QA_', event.shiftKey)" id="iftblSL11QA_" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">switch<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">2</div></div></td>
+</tr></table>
+<div id="pftblSL11QA_" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">default<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">break<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('piIYXyyvlRp2', event.shiftKey)" id="iiIYXyyvlRp2" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">try/catch/finallythrow<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">3</div></div></td>
+</tr></table>
+<div id="piIYXyyvlRp2" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">同期<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">非同期<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">throw<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('ppaAN-7LDbEQ', event.shiftKey)" id="ipaAN-7LDbEQ" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Error<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">2</div></div></td>
+</tr></table>
+<div id="ppaAN-7LDbEQ" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">new Error or Error<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">スタックトレース<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pp4bXRzEJ5lX', event.shiftKey)" id="ip4bXRzEJ5lX" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Promise<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">13</div></div></td>
+</tr></table>
+<div id="pp4bXRzEJ5lX" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">値の抽象<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">5</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">非同期コントールフロー<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">5</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">エラーハンドリング<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">3</div></div></td>
+</tr></table>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pphNFuUw8MSI', event.shiftKey)" id="iphNFuUw8MSI" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration">Loops and iteration</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">15</div></div></td>
+</tr></table>
+<div id="pphNFuUw8MSI" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pbfF96z7ptmy', event.shiftKey)" id="ibfF96z7ptmy" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">for<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">11</div></div></td>
+</tr></table>
+<div id="pbfF96z7ptmy" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img onmousedown="ioSwitch('pay5m8Kf53Op', event.shiftKey)" id="iay5m8Kf53Op" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">for(C)<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column summary_node level3" style="">6</div></div></td>
+</tr></table>
+<div id="pay5m8Kf53Op" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">basic<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">scope<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">3</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img onmousedown="ioSwitch('pgSCaGH2lnXZ', event.shiftKey)" id="igSCaGH2lnXZ" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">for in<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column summary_node level3" style="">2</div></div></td>
+</tr></table>
+<div id="pgSCaGH2lnXZ" class="expanded"><table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">bad part<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">2</div></div></td>
+</tr></table></div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">for of<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor3"><div class="full column level3" style="">3</div></div></td>
+</tr>
+<tr>
+<td class=" level3 colbackground1"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 41px;" class=" subcell wholedocgutter levelguttercolor3"></td>
+<td class=" subcell wholedocgutter levelguttercolor3" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor3 level3" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">Generatorについてが先に必要<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor3" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('plxZfxYrdOhm', event.shiftKey)" id="ilxZfxYrdOhm" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">while<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">4</div></div></td>
+</tr></table>
+<div id="plxZfxYrdOhm" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">for vs. while<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">do while<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">break/continue<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pctpvVbODryc', event.shiftKey)" id="ictpvVbODryc" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions">Functions</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">35</div></div></td>
+</tr></table>
+<div id="pctpvVbODryc" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('paIrpkDjE4GN', event.shiftKey)" id="iaIrpkDjE4GN" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Defining functions<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">4</div></div></td>
+</tr></table>
+<div id="paIrpkDjE4GN" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">関数 declaration<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">関数 expression<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">3</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Calling functions<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('phruGGIxwFoK', event.shiftKey)" id="ihruGGIxwFoK" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Function Scope<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">9</div></div></td>
+</tr></table>
+<div id="phruGGIxwFoK" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">ScopeとStack<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr>
+<tr>
+<td class=" level3 colbackground1"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 41px;" class=" subcell wholedocgutter levelguttercolor3"></td>
+<td class=" subcell wholedocgutter levelguttercolor3" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor3 level3" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">スタックトレースって何という話<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor3" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Closure<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor3"><div class="full column level3" style="">7</div></div></td>
+</tr>
+<tr>
+<td class=" level3 colbackground1"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 41px;" class=" subcell wholedocgutter levelguttercolor3"></td>
+<td class=" subcell wholedocgutter levelguttercolor3" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor3 level3" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">envの話とかが必要そう<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor3" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pk4JbzsRuGsi', event.shiftKey)" id="ik4JbzsRuGsi" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Arguments<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">6</div></div></td>
+</tr></table>
+<div id="pk4JbzsRuGsi" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">arguments オブジェクト<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">デフォルト引数<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Rest parameters<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">this<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">10</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('por8bYs6VNaV', event.shiftKey)" id="ior8bYs6VNaV" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Arrow Function<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">5</div></div></td>
+</tr></table>
+<div id="por8bYs6VNaV" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Syntax<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">this<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor3"><div class="full column level3" style="">4</div></div></td>
+</tr>
+<tr>
+<td class=" level3 colbackground1"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 41px;" class=" subcell wholedocgutter levelguttercolor3"></td>
+<td class=" subcell wholedocgutter levelguttercolor3" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor3 level3" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">thisを移譲してる。thisを持てない<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor3" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pdMtkKANbOTA', event.shiftKey)" id="idMtkKANbOTA" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Expressions and operators</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">37</div></div></td>
+</tr></table>
+<div id="pdMtkKANbOTA" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">代入<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">比較<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">4</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">算術演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">ビット演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">論理演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pitcw9NposdN', event.shiftKey)" id="iitcw9NposdN" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">文字列演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">1</div></div></td>
+</tr></table>
+<div id="pitcw9NposdN" class="expanded"><table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">+= "str"<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table></div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">条件（三項）演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">コンマ演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">1</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pgJYOSrVxSpi', event.shiftKey)" id="igJYOSrVxSpi" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">単項演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">9</div></div></td>
+</tr></table>
+<div id="pgJYOSrVxSpi" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">delete<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img onmousedown="ioSwitch('pkOulndx0TlG', event.shiftKey)" id="ikOulndx0TlG" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">typeof<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor3"><div class="full column summary_node level3" style="">6</div></div></td>
+</tr>
+<tr>
+<td class=" level3 colbackground1"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 41px;" class=" subcell wholedocgutter levelguttercolor3"></td>
+<td class=" subcell wholedocgutter levelguttercolor3" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor3 level3" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">推奨はされないんだよ的な。適切なものw使うには<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor3" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+<div id="pkOulndx0TlG" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">typeof<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">4</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">[[class]]<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">2</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">void<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pmzbtOzJLjfQ', event.shiftKey)" id="imzbtOzJLjfQ" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">関係演算子<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor2"><div class="full column summary_node level2" style="">6</div></div></td>
+</tr>
+<tr>
+<td class=" level2 colbackground1"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 25px;" class=" subcell wholedocgutter levelguttercolor2"></td>
+<td class=" subcell wholedocgutter levelguttercolor2" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor2 level2" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">JavaScript Gardenを読みましょう<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor2" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+<div id="pmzbtOzJLjfQ" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">in<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">instanceof<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor3"><div class="full column level3" style="">3</div></div></td>
+</tr>
+<tr>
+<td class=" level3 colbackground1"><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 41px;" class=" subcell wholedocgutter levelguttercolor3"></td>
+<td class=" subcell wholedocgutter levelguttercolor3" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor3 level3" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">ライブラリ時代の罠についてが必要そう<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor3" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Spread operator<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pia-LTLeeKLz', event.shiftKey)" id="iia-LTLeeKLz" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">演算子の優先順位<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">2</div></div></td>
+</tr></table>
+<div id="pia-LTLeeKLz" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img onmousedown="ioSwitch('pkvitoAoByPA', event.shiftKey)" id="ikvitoAoByPA" border="0" alt="&gt;" class="parent" src="Collapsed.png" title="expand"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">カッコ<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column summary_node level3" style="">2</div></div></td>
+</tr></table>
+<div id="pkvitoAoByPA" class="collapsed"><table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor4"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level4 levelguttercolor4" style="width: 57px;"></td>
+<td class=" subcell wholedocgutter indicator level4 levelguttercolor4" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level4 levelguttercolor4" style=" width: 1px; "></td>
+<td class=" content level4 subcell">優先順<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor4"><div class="full column level4" style="">2</div></div></td>
+</tr></table></div>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pjJHEgBKcTLT', event.shiftKey)" id="ijJHEgBKcTLT" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates">Numbers and dates</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">11</div></div></td>
+</tr></table>
+<div id="pjJHEgBKcTLT" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Number<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Math<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Date<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr>
+<tr>
+<td class=" level2 colbackground1"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 25px;" class=" subcell wholedocgutter levelguttercolor2"></td>
+<td class=" subcell wholedocgutter levelguttercolor2" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor2 level2" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">まじめに学ぶというものではないが<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor2" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pdXrw01RA3Yz', event.shiftKey)" id="idXrw01RA3Yz" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Text_formatting">Text formatting</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">23</div></div></td>
+</tr></table>
+<div id="pdXrw01RA3Yz" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pmpnlE8Gad3A', event.shiftKey)" id="impnlE8Gad3A" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">String<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">12</div></div></td>
+</tr></table>
+<div id="pmpnlE8Gad3A" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">literal<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">method<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">10</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Template Strings<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">i18n<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">String to RegExp<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pl7dhCqzeeUN', event.shiftKey)" id="il7dhCqzeeUN" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections">Indexed collections</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">22</div></div></td>
+</tr></table>
+<div id="pl7dhCqzeeUN" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('ppU8bdk4vPY6', event.shiftKey)" id="ipU8bdk4vPY6" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Array<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">14</div></div></td>
+</tr></table>
+<div id="ppU8bdk4vPY6" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">literal<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">4</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">method<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">10</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">TypedArray<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor2"><div class="full column level2" style="">8</div></div></td>
+</tr>
+<tr>
+<td class=" level2 colbackground1"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 25px;" class=" subcell wholedocgutter levelguttercolor2"></td>
+<td class=" subcell wholedocgutter levelguttercolor2" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor2 level2" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">多分これだけということではない<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor2" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pm5Ck3ZVSjy7', event.shiftKey)" id="im5Ck3ZVSjy7" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections">Keyed collections</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">15</div></div></td>
+</tr></table>
+<div id="pm5Ck3ZVSjy7" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('pbSOJTD1jvPk', event.shiftKey)" id="ibSOJTD1jvPk" border="0" alt="&gt;" class="parent" src="Collapsed.png" title="expand"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Map<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">4</div></div></td>
+</tr></table>
+<div id="pbSOJTD1jvPk" class="collapsed"><table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">WeakMap<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">4</div></div></td>
+</tr></table></div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Set<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">WeakSet<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr>
+<tr>
+<td class=" level2 colbackground1"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 25px;" class=" subcell wholedocgutter levelguttercolor2"></td>
+<td class=" subcell wholedocgutter levelguttercolor2" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor2 level2" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">ユースケースが多いという意味合いで<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor2" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">WeakSet<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pkN9LKbpebSv', event.shiftKey)" id="ikN9LKbpebSv" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects">Working with objects</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">24</div></div></td>
+</tr></table>
+<div id="pkN9LKbpebSv" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Objects and properties<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">8</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">オブジェクトの列挙<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">4</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Creating new objects<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style=""></div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Constructor<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack">
+<tr>
+<td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Object.create<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style="border-bottom: none;"><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr>
+<tr>
+<td class=" level2 colbackground1"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="width:100%"><tr>
+<td style="width: 25px;" class=" subcell wholedocgutter levelguttercolor2"></td>
+<td class=" subcell wholedocgutter levelguttercolor2" style="width: 15px;"></td>
+<td class=" subcell labelpadding wholedocgutter levelguttercolor2 level2" style=" color: rgba(0,0,0,0); width: 1px; "></td>
+<td class=" subcell" style="width: 16px;"></td>
+<td class="note subcell">prototypeの話が先にないとわからん<br>
+</td>
+</tr></table></div></td>
+<td class=" colbackground2"><div class=" levelcolor2" style="width: 100%; height: 100%; "></div></td>
+</tr>
+</table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">getter/setter<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img onmousedown="ioSwitch('peIinIefnF2r', event.shiftKey)" id="ieIinIefnF2r" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Comparing Objects<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column summary_node level2" style="">3</div></div></td>
+</tr></table>
+<div id="peIinIefnF2r" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Immutable<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">2</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor3"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level3 levelguttercolor3" style="width: 41px;"></td>
+<td class=" subcell wholedocgutter indicator level3 levelguttercolor3" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level3 levelguttercolor3" style=" width: 1px; "></td>
+<td class=" content level3 subcell">Shallow Copy<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor3"><div class="full column level3" style="">1</div></div></td>
+</tr></table>
+</div>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('ppZiVcP-I8M2', event.shiftKey)" id="ipZiVcP-I8M2" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model">Details of the object model</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">20</div></div></td>
+</tr></table>
+<div id="ppZiVcP-I8M2" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">prototype<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">10</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">class<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">10</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pj3Okbqvxhh5', event.shiftKey)" id="ij3Okbqvxhh5" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">Iterators and generators</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">13</div></div></td>
+</tr></table>
+<div id="pj3Okbqvxhh5" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">iterator<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">iterable<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">3</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Generator<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr></table>
+</div>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 9px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 15px;"><img onmousedown="ioSwitch('pknpHyMzL6nP', event.shiftKey)" id="iknpHyMzL6nP" border="0" alt="V" class="parent" src="Expanded.png" title="collapse"></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style='color:rgb(0,0,233) ;  font-family: "Times", sans-serif;  text-decoration:  underline;background-color:rgba(0,0,0,0) ;  '> <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Meta_programming">Meta programming</a></span></span><br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor1"><div class="full column summary_node level1" style="">12</div></div></td>
+</tr></table>
+<div id="pknpHyMzL6nP" class="expanded">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Proxy<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">7</div></div></td>
+</tr></table>
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack"><tr>
+<td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 25px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 15px;"><img border="0" alt="*" class="leaf" src="LeafRowHandle.png"></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">Reflect5<br>
+</td>
+</tr></table></div></td>
+<td class=" col2 colbackground2 col_width2" style=""><div class=" full levelcolor2"><div class="full column level2" style="">5</div></div></td>
+</tr></table>
+</div>
+</td></tr></table></body>
+</html>
