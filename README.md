@@ -155,3 +155,6 @@ https://www.youtube.com/watch?v=kGsvoAbddBY&amp;list=PL37ZVnwpeshG7ThPHHHRvPFTeU
 
 ### ES6 Overview in 350 Bullet Points
 > Url: [https://github\.com/bevacqua/es6](https://github.com/bevacqua/es6)  
+
+
+- [JavaScriptのレベル別書籍のまとめ](https://gist.github.com/azu/027859e08e284cb8dfe7 "JavaScriptのレベル別書籍のまとめ")
